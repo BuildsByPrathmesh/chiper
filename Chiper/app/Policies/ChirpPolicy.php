@@ -13,7 +13,7 @@ class ChirpPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class ChirpPolicy
      */
     public function view(User $user, Chirp $chirp): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,16 +29,15 @@ class ChirpPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    
     public function update(User $user, Chirp $chirp): bool
     {
-        return false;
+        return $user->id === $chirp->user_id;
     }
 
     /**
@@ -46,7 +45,7 @@ class ChirpPolicy
      */
     public function delete(User $user, Chirp $chirp): bool
     {
-        return false;
+        return $user->id === $chirp->user_id;
     }
 
     /**
